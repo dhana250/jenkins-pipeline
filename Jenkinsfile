@@ -1,9 +1,10 @@
 pipeline {
  agent any
-environment {
-    registry = "dhana250/eureka-client"
-    registryCredential = 'docker'
-  }
+ environment {
+     registry = "dhana250/eureka-client"
+     registryCredential = 'docker'
+   }
+
 
     stages {
             stage ('Compile Stage') {
@@ -53,3 +54,4 @@ environment {
         }
       }
   }
+}
