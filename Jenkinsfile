@@ -27,12 +27,12 @@ environment {
             }
 
 
-            stage ('Deployment Stage') {
+            stage ('Package Stage') {
 
                 steps {
                 echo '4564645645645...'
                     withMaven(maven : 'maven_3_6_3') {
-                        sh 'mvn deploy'
+                        sh 'mvn package'
                     }
                 }
             }
