@@ -1,35 +1,41 @@
 pipeline {
+ agent any
 environment {
     registry = "dhana250/eureka-client"
     registryCredential = 'docker'
-  }  agent any  stages {
+  }
 
-     steps {
+    stages {
+            stage ('Compile Stage') {
 
-                  withMaven(maven : 'maven_3_6_3') {
-                      sh 'mvn clean compile'
-                  }
-              }
-          }
-
-          stage ('Testing Stage') {
-
-              steps {
-
-                  withMaven(maven : 'maven_3_6_3') {
-                      sh 'mvn test'
-                  }
-              }
-          }
-          stage ('package Stage') {
-
-                        steps {
-
-                            withMaven(maven : 'maven_3_6_3') {
-                                sh 'mvn package'
-                            }
-                        }
+                steps {
+                echo 'jshdfjkshfjkshf...'
+                    withMaven(maven : 'maven_3_6_3') {
+                        sh 'mvn clean compile'
                     }
+                }
+            }
+
+            stage ('Testing Stage') {
+
+                steps {
+                echo 'rtyrtytdfyrtrt...'
+                    withMaven(maven : 'maven_3_6_3') {
+                        sh 'mvn test'
+                    }
+                }
+            }
+
+
+            stage ('Deployment Stage') {
+
+                steps {
+                echo '4564645645645...'
+                    withMaven(maven : 'maven_3_6_3') {
+                        sh 'mvn deploy'
+                    }
+                }
+            }
       stage('Building image') {
         steps{
           script {
@@ -46,5 +52,4 @@ environment {
           }
         }
       }
-  }
   }
