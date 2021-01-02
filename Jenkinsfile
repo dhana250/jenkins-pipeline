@@ -32,7 +32,7 @@ pipeline {
       stage('Building image') {
         steps{
           script {
-            echo $PATH
+            echo "$PATH"
             dockerImage = docker.build registry + ":$BUILD_NUMBER"
          
           }
