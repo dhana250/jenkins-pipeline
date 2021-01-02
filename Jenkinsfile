@@ -43,12 +43,13 @@ pipeline {
         }
       }
       stage('Deploy Image') {
-        steps{
-          when{
+        when{
                   expression {
                    BRANCH_NAME == 'dev'
                   }
                  }
+        steps{
+        
           script {
             docker.withRegistry( '', registryCredential ) {
               dockerImage.push()
