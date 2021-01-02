@@ -32,7 +32,7 @@ pipeline {
       stage('Building image') {
         steps{
           script {
-            echo "${VERSION}"
+            echo "$POM_VERSION"
             dockerImage = docker.build registry + ":$BUILD_NUMBER"
          
           }
