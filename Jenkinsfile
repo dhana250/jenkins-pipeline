@@ -5,7 +5,7 @@ pipeline {
      registryCredential = 'jenkins-docker'
      dockerImage =''
   def pom = readMavenPom()
-def version=pom.version
+
    }
  
 
@@ -33,9 +33,11 @@ def version=pom.version
             }
       stage('Building image') {
         steps{
+         def pom = readMavenPom 'pom.xml'
+         echo "{pom}"
           script {
             echo version
-            dockerImage = docker.build registry + ":$BUILD_NUMBER"
+           dockerImage = docker.build registry + ":${pom}"
          
           }
         }
