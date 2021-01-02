@@ -18,16 +18,6 @@ pipeline {
                 }
             }
 
-            stage ('Testing Stage') {
-
-                steps {
-                echo 'rtyrtytdfyrtrt...'
-                    withMaven(maven : 'maven_3_6_3') {
-                        sh 'mvn test'
-                    }
-                }
-            }
-
 
             stage ('Package Stage') {
 
