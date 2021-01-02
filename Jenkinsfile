@@ -51,4 +51,13 @@ pipeline {
         }
       }
   }
+ 
+ post{
+  always{
+   echo "Image is pushed always"
+  }
+  success{
+   echo "build is success"
+  }
+ }
 }
