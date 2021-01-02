@@ -45,7 +45,7 @@ pipeline {
       stage('Deploy Image') {
         when{
                   expression {
-                   BRANCH_NAME == 'dev'
+                   "${BRANCH_NAME}" == 'dev'
                   }
                  }
         steps{
