@@ -5,6 +5,7 @@ pipeline {
      registryCredential = 'jenkins-docker'
      dockerImage =''
    }
+ 
 
 
     stages {
@@ -31,8 +32,9 @@ pipeline {
       stage('Building image') {
         steps{
           script {
+            echo $PATH
             dockerImage = docker.build registry + ":$BUILD_NUMBER"
-           echo '${dockerImage}'
+         
           }
         }
       }
