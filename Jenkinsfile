@@ -34,7 +34,7 @@ pipeline {
         steps{
          
           script {
-            def pom = readMavenPom 'pom.xml'
+            def pom = readMavenPom file:'pom.xml'
             echo "${pom}"
            dockerImage = docker.build registry + ":${pom}"
          
