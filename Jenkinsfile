@@ -35,6 +35,7 @@ pipeline {
         steps{
          
           script {
+           echo "$env.BRANCH_NAME"
             def pom = readMavenPom file:'pom.xml'
             echo "${pom.version}"
            dockerImage = docker.build registry + ":${pom.version}"
@@ -43,6 +44,7 @@ pipeline {
         }
       }
       stage('Deploy Image') {
+     
         when{
                   expression {
                    "$env.BRANCH_NAME" == 'master'
