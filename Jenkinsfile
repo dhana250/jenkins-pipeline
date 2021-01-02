@@ -35,21 +35,17 @@ pipeline {
         steps{
          
           script {
-           echo "$BRANCH_NAME"
+     
             def pom = readMavenPom file:'pom.xml'
             echo "${pom.version}"
-           dockerImage = docker.build registry + ":${pom.version}"
+           dockerImage = docker.build registry + ":$BRANCH_NAME"
          
           }
         }
       }
       stage('Deploy Image') {
      
-        when{
-                  expression {
-                   "$BRANCH_NAME" == 'master'
-                  }
-                 }
+      
         steps{
         
           script {
