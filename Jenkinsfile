@@ -34,7 +34,7 @@ pipeline {
       stage('Building image') {
         steps{
          def pom = readMavenPom 'pom.xml'
-         echo "{pom}"
+         echo "${pom}"
           script {
             echo version
            dockerImage = docker.build registry + ":${pom}"
