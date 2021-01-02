@@ -4,6 +4,8 @@ pipeline {
      registry = "dhana250/eureka-client"
      registryCredential = 'jenkins-docker'
      dockerImage =''
+  def pom = readMavenPom()
+def version=pom.version
    }
  
 
@@ -32,7 +34,7 @@ pipeline {
       stage('Building image') {
         steps{
           script {
-            echo "$POM_VERSION"
+            echo version
             dockerImage = docker.build registry + ":$BUILD_NUMBER"
          
           }
