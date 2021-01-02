@@ -35,7 +35,7 @@ pipeline {
         steps{
          
           script {
-           echo "$env.BRANCH_NAME"
+           echo BRANCH_NAME
             def pom = readMavenPom file:'pom.xml'
             echo "${pom.version}"
            dockerImage = docker.build registry + ":${pom.version}"
