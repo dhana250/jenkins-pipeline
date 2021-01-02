@@ -2,7 +2,8 @@ pipeline {
  agent any
  environment {
      registry = "dhana250/eureka-client"
-     registryCredential = 'docker'
+     registryCredential = 'jenkins-docker'
+     dockerImage =''
    }
 
 
