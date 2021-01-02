@@ -4,7 +4,6 @@ pipeline {
      registry = "dhana250/eureka-client"
      registryCredential = 'jenkins-docker'
      dockerImage =''
-  def pom = readMavenPom()
 
    }
  
