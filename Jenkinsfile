@@ -13,6 +13,7 @@ pipeline {
             stage ('Compile Stage') {
 
                 steps {
+               
                 echo 'jshdfjkshfjkshf...'
                     withMaven(maven : 'maven_3_6_3') {
                         sh 'mvn clean compile'
@@ -43,6 +44,11 @@ pipeline {
       }
       stage('Deploy Image') {
         steps{
+          when{
+                  expression {
+                   BRANCH_NAME == 'dev'
+                  }
+                 }
           script {
             docker.withRegistry( '', registryCredential ) {
               dockerImage.push()
