@@ -38,7 +38,7 @@ pipeline {
      
             def pom = readMavenPom file:'pom.xml'
             echo "${pom.version}"
-           dockerImage = docker.build registry + ":$BRANCH_NAME"
+           dockerImage = docker.build registry + ":$env.BRANCH_NAME"
          
           }
         }
